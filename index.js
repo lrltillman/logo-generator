@@ -33,22 +33,24 @@ function init() {
     })
 }
 
-function writeLogoFile(filename, data) {
+function writeLogoFile(fileName, data) {
+
     fs.writeFile(`${fileName}.svg`, renderShape(data), (error) => {
         if (error) console.log("Oops, something went wrong!");
     })
 }
 
 function renderShape(data) {
-    logoShape;
-    if (data.shape === "triangle") {
-        logoShape = new Triangle(data.color, data.txt, data.txtColor);
+    let logoShape = "";
+    let shapeChoice = data.shape;
+    if (shapeChoice === "triangle") {
+        logoShape = new Triangle(data.color, data.text, data.txtColor);
         return logoShape;
-    } else if (data.shape === "square") {
-        logoShape = new Square(data.color, data.txt, data.txtColor);
+    } else if (shapeChoice === "square") {
+        logoShape = new Square(data.color, data.text, data.txtColor);
         return logoShape;
-    } else if (data.shape === "circle") {
-        logoShape = new Circle(data.color, data.txt, data.txtColor);
+    } else if (shapeChoice === "circle") {
+        logoShape = new Circle(data.color, data.text, data.txtColor);
         return logoShape;
     } else console.log("There has been a HUUUUGE error dude!")
 }
