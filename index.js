@@ -1,5 +1,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer")
+const jest = require("jest");
 
 const questions = [
     {
@@ -13,7 +14,7 @@ const questions = [
         name: "txtColor"
     },
     {
-        type: 'checkbox',
+        type: 'list',
         message: 'What shape would you like your logo to be?',
         choices: ["triangle", "square", "rectangle"],
         name: "shape"
@@ -45,14 +46,14 @@ function renderShape(data) {
     let shapeChoice = data.shape;
     if (shapeChoice === "triangle") {
         logoShape = new Triangle(data.color, data.text, data.txtColor);
-        return logoShape;
+        return logoShape.render();
     } else if (shapeChoice === "square") {
         logoShape = new Square(data.color, data.text, data.txtColor);
-        return logoShape;
+        return logoShape.render();
     } else if (shapeChoice === "circle") {
         logoShape = new Circle(data.color, data.text, data.txtColor);
-        return logoShape;
-    } else console.log("There has been a HUUUUGE error dude!")
+        return logoShape.render();
+    } else console.log("AHHHHH ERROR", shapeChoice);
 }
 
 class Shape {
@@ -71,9 +72,9 @@ class Square extends Shape {
         return `
 <svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
 
-  <rect x="75" y="30" width="150" height="150" fill="${data.color}"  />
+  <rect x="75" y="30" width="150" height="150" fill="${this.color}"  />
 
-  <text x="150" y="125" font-size="60" text-anchor="middle" fill="${data.txtColor}">${data.text}</text>
+  <text x="150" y="125" font-size="60" text-anchor="middle" fill="${this.txtColor}">${this.text}</text>
 
 </svg>
 `
@@ -88,9 +89,9 @@ class Circle extends Shape {
         return `
 <svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
 
-  <circle cx="150" cy="100" r="80" fill="${data.color}" />
+  <circle cx="150" cy="100" r="80" fill="${this.color}" />
 
-  <text x="150" y="125" font-size="60" text-anchor="middle" fill="${data.txtColor}">${data.text}</text>
+  <text x="150" y="125" font-size="60" text-anchor="middle" fill="${this.txtColor}">${this.text}</text>
 
 </svg>   
 `
@@ -105,9 +106,9 @@ class Triangle extends Shape {
         return `
 <svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
 
-    <polygon points="150 5, 300 150, 5 150" fill="${data.color}" />
+    <polygon points="150 5, 300 150, 5 150" fill="${this.color}" />
 
-  <text x="150" y="125" font-size="60" text-anchor="middle" fill="${data.txtColor}">${data.text}</text>
+  <text x="150" y="125" font-size="60" text-anchor="middle" fill="${this.txtColor}">${this.text}</text>
 
 </svg>
         
