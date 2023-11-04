@@ -12,5 +12,11 @@ This project uses node.js, with several dependencies: inquirer, fs, and jest.
 ## Testing
 Three tests were done to complete this assignment, one for each class of logo shape. All three tests are seeing if the writeFile method correctly renders the svg code to a new svg file. All three tests passed. 
 
-[Link to demo video](https://drive.google.com/file/d/1BEnR3NJcgendibwa_tR4dMceKpNL8l8L/view)
+## Contributors
+I received guidance and assistance from TA Katy Vincent and tutor Andrew Hardemon. 
+
+
+[Link to demo video.](https://drive.google.com/file/d/1BEnR3NJcgendibwa_tR4dMceKpNL8l8L/view) This video shows the three example svg files being generated. Those files are in the "generated-examples" folder. 
+
+
 
